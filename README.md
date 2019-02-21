@@ -8,6 +8,8 @@ Build the image
 
     docker build -t vitasdk-docker .
 
+(or just run `make`)
+
 Symlink the helper script
 -------------------------
 
