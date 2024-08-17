@@ -1,26 +1,34 @@
 Vita SDK in a Docker Image
 ==========================
 
-This is based on [pspdev-docker](https://github.com/pspdev/pspdev-docker).
+This is based on [pspdev-docker](https://github.com/pspdev/pspdev-docker) and [vitasdk-docker](https://github.com/gnuton/vitasdk-docker).
+
+Build status badge:
+-------------------
+
+[![Docker](https://github.com/leleobhz/vitasdk-docker/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/leleobhz/vitasdk-docker/actions/workflows/docker-publish.yml)
 
 Build the image
 ---------------
 
-    docker build -t vitasdk-docker .
+    docker build -t localhost/vitasdk-docker:latest .
 
 (or just run `make`)
 
-Symlink the helper script
--------------------------
 
-Assuming you have a `~/.local/bin` folder and it's in your `$PATH`:
+Docker Compose
+--------------
 
-    ln -s $(pwd)/vitasdk-docker ~/.local/bin
-
-Alternatively, you can also copy the script somewhere.
+If you wan't to use docker compose, you can use a 
+new file called `docker-compose.override.yaml` 
+to add you build using base compose as skel.
 
 Using it
 --------
+
+This project contains a script called `vitasdk-docker`.
+This script allows user to run it from any project you need 
+and wrap build commands inside the container.
 
 The directory where you run the script gets exposed to the
 Docker image as `/build/`, and this is also the working
@@ -44,14 +52,3 @@ Once this is set up, you can use the script from outside
 (again, from the parent folder, so it can find source files):
 
     vitasdk-docker make -C build
-
-Saving and loading
-------------------
-
-Save the image:
-
-    docker save vitasdk-docker | bzip2 > vitasdk-docker.tar.bz2
-
-Load the image:
-
-    docker load < bzip2 -dc vitasdk-docker.tar.bz2

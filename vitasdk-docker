@@ -1,2 +1,2 @@
 #!/bin/bash
-exec docker run -v "$(pwd):/build" --rm -it vitasdk-docker:latest "$@"
+exec docker run -v "$(pwd):/build" --rm -it --name vitasdk-build ghcr.io/leleobhz/vitasdk-docker:master "$@"
