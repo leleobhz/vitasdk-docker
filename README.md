@@ -8,25 +8,13 @@ Build status badge:
 
 [![Docker](https://github.com/leleobhz/vitasdk-docker/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/leleobhz/vitasdk-docker/actions/workflows/docker-publish.yml)
 
-Build the image
----------------
-
-    docker build -t localhost/vitasdk-docker:latest .
-
-(or just run `make`)
-
-
-Docker Compose
---------------
-
-If you wan't to use docker compose, you can use a 
-new file called `docker-compose.override.yaml` 
-to add you build using base compose as skel.
-
 Using it
 --------
 
-This project contains a script called `vitasdk-docker`.
+You can manually use the image `ghcr.io/leleobhz/vitasdk-docker:latest` 
+and set the root of you application as volume to `/build`. 
+
+This project also contains a script called `vitasdk-docker`.
 This script allows user to run it from any project you need 
 and wrap build commands inside the container.
 
@@ -52,3 +40,17 @@ Once this is set up, you can use the script from outside
 (again, from the parent folder, so it can find source files):
 
     vitasdk-docker make -C build
+
+Docker Compose
+--------------
+
+If you wan't to use docker compose, you can use a 
+new file called `docker-compose.override.yaml` 
+to add you build using base compose as skel.
+
+Build the image
+---------------
+
+    docker build -t localhost/vitasdk-docker:latest .
+
+(or just run `make`)
