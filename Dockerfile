@@ -1,4 +1,4 @@
-FROM python:slim as builder
+FROM docker.io/library/python:slim as builder
 
 LABEL creator="Thomas Perl <m@thp.io>"
 LABEL mantainer="Leonardo Amaral <git@leonardoamaral.com.br"
@@ -37,7 +37,7 @@ RUN git clone https://github.com/JagerDesu/vita-shaders.git /vita-shaders && \
     make && \
     cp shacc ${VITASDK}/bin
 
-FROM python:slim
+FROM docker.io/library/python:slim
 
 ENV VITASDK /usr/local/vitasdk
 ENV PATH ${PATH}:${VITASDK}/bin:/usr/local/vita-makepkg
